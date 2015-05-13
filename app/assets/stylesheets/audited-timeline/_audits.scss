@@ -1,0 +1,10 @@
+.audited-timeline .audit {
+  i.action {
+    font-size: 0.8em;
+    margin-left: 0.5em;
+
+    &.create  { color: $green; }
+    &.update  { color: $blue; }
+    &.destroy { color: $red; }
+  }
+}

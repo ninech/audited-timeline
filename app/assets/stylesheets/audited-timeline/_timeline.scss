@@ -1,0 +1,115 @@
+.audited-timeline {
+  .timeline-wrapper {
+    position: relative;
+    padding: 2px 0px 2px 64px;
+    margin-top: $base-spacing;
+    margin-bottom: $base-spacing;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .avatar {
+      float: left;
+      margin-left: -64px;
+      border-radius: $base-border-radius;
+    }
+  }
+
+  .timeline-item {
+    position: relative;
+    border: $base-border;
+    border-radius: $base-border-radius;
+
+    &:before, &:after {
+      position: absolute;
+      top: 11px;
+      left: -16px;
+      right: 100%;
+      width: 0;
+      height: 0;
+      display: block;
+      content: " ";
+      border-color: transparent;
+      border-style: solid solid outset;
+    }
+
+    &:before {
+      border-width: 8px;
+      border-right-color: $base-border-color;
+    }
+
+    &:after {
+      border-right-color: #f2f8fa;
+      border-width: 7px;
+      margin-top: 1px;
+      margin-left: 2px;
+    }
+
+    &:hover .timeline-header .timeline-actions {
+      visibility: visible;
+    }
+  }
+
+  .timeline-header {
+    padding: $base-spacing/3 $base-spacing/1.5;
+    background-color: lighten($light-gray, 15%);
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+
+    .timeline-user {
+      font-weight: bold;
+      margin-right: 0.5em;
+    }
+    .timeline-date {
+      color: $dark-gray;
+      font-size: 0.8em;
+    }
+    .timeline-actions {
+      float: right;
+      visibility: hidden;
+      a { color: $light-gray; }
+      a:hover { color: $blue; }
+    }
+  }
+
+
+  .timeline-body {
+    padding: $base-spacing/1.5;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    form.simple_form {
+      float: none;
+      width: 100%;
+      margin: 0;
+    }
+
+    table {
+      margin: 0;
+
+      th {
+        padding: 0 0 .25em;
+      }
+
+      td {
+        padding: .25em 0;
+        font-size: .9em;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+
+    h1 {
+      font-size: 1.2em;
+      margin: 0 0 .5em;
+      padding: 0;
+      height: auto !important;
+    }
+  }
+}

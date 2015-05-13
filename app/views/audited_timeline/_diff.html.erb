@@ -1,0 +1,24 @@
+<%= cache [audit, :diff] do %>
+  <h1><%= audit.auditable_type.constantize.model_name.human %></h1>
+  <table class="diff">
+    <thead>
+      <tr>
+        <th><%= t '.attribute' %></th>
+        <th><%= t '.from' %></th>
+        <th><%= t '.to' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% audit.human_audited_changes.each_pair do |field, value| %>
+        <% next if [value].flatten.join.blank? %>
+
+        <tr>
+          <td>
+            <%= audit.auditable_class.human_attribute_name field %>
+          </td>
+          <%= render "audits/diff_#{audit.action}", field: field, value: value %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
