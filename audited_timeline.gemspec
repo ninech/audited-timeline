@@ -19,4 +19,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
+
+  spec.add_runtime_dependency 'audited', '>= 4.2.0'
+  spec.add_runtime_dependency 'rails', '>= 4.0.0'
+  spec.add_runtime_dependency 'draper', '>= 2.1.0'
 end

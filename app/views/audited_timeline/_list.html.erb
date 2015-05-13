@@ -1,20 +1,20 @@
 <% audits.reorder('created_at desc').limit(10).decorate.each do |audit| %>
-  <div id="<%= dom_id audit %>" class="timeline-wrapper">
+  <div id="<%= dom_id audit %>" class="audited-timeline-wrapper">
     <% if audit.user.present? %>
       <%= audited_timeline_user_gravatar audit.user %>
     <% end %>
 
-    <div class="timeline-item audit <%= audit.action %>">
-      <div class="timeline-header">
-        <span class="timeline-user">
+    <div class="audited-timeline-item audited-timeline-audit <%= audit.action %>">
+      <div class="audited-timeline-header">
+        <span class="audited-timeline-user">
           <%= audit.user %>
           <%= audited_timeline_action_icon audit %>
         </span>
-        <span class="timeline-date">
+        <span class="audited-timeline-date">
           <%= l audit.created_at, format: :very_short %>
         </span>
       </div>
-      <div class="timeline-body">
+      <div class="audited-timeline-body">
         <%= render "audits/action.#{audit.auditable_type.gsub('::', '').underscore}.#{audit.action}", audit: audit %>
       </div>
     </div>

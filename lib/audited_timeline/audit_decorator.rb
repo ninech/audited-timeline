@@ -1,14 +1,16 @@
+require 'draper'
+
 module AuditedTimeline
-  class AuditDecorator < Draper::Decorator
+  class AuditDecorator < ::Draper::Decorator
     delegate_all
     delegate :fullname, to: :user, allow_nil: true, prefix: true
 
     def audited_contact
-      Contact.unscoped.find(audit.audited_changes['contact_id'])
+      Contact.unscoped.find(object.audited_changes['contact_id'])
     end
 
     def audited_role
-      AccountContact.roles.key(audit.audited_changes['role'])
+      AccountContact.roles.key(object.audited_changes['role'])
     end
 
     def human_audited_changes
@@ -38,8 +40,8 @@ module AuditedTimeline
     def object_name_by_field_and_value(field, value)
       return nil unless value
       begin
-        object = associated_class_name(auditable_type, field).unscoped.find(value)
-        "#{object} (#{value})"
+        obj= associated_class_name(auditable_type, field).unscoped.find(value)
+        "#{obj} (#{value})"
       rescue
         "unknown (#{value})"
       end
@@ -58,7 +60,7 @@ module AuditedTimeline
     end
 
     def audited_class
-      audit.auditable.class
+      object.auditable.class
     end
 
     def associated_class_name(model, associated_field)
