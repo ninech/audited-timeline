@@ -15,7 +15,14 @@
         </span>
       </div>
       <div class="audited-timeline-body">
-        <%= render "audits/action.#{audit.auditable_type.gsub('::', '').underscore}.#{audit.action}", audit: audit %>
+        <% if lookup_context.template_exists?(audited_timeline_partial_for(audit), [], true) %>
+          <%= render audited_timeline_partial_for(audit), audit: audit %>
+        <% else %>
+          <% if Rails.env.development? %>
+            <!-- create partial <%= audited_timeline_partial_for(audit) %> to override this table -->
+          <% end %>
+          <%= render 'audited_timeline/diff', audit: audit %>
+        <% end %>
       </div>
     </div>
   </div>

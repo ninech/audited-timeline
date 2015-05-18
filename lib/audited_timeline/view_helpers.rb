@@ -20,5 +20,9 @@ module AuditedTimeline
       options.reverse_merge! class: 'avatar', alt: user.to_s, size: '48x48'
       image_tag audited_timeline_gravatar_url(user.email), options
     end
+
+    def audited_timeline_partial_for(audit)
+      "audits/#{audit.auditable_type.underscore}.#{audit.action}"
+    end
   end
 end
