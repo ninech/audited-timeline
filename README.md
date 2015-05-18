@@ -20,7 +20,15 @@ Render the `audited_timeline/list` partial and provide it the audits to be
 rendered:
 
 ```erb
-<%= render 'audited_timeline/list', audits: @my_object.audits %>
+<%= render 'audited_timeline/list', audits: @user.all_audits %>
+```
+
+### Add CSS Styles
+
+Include `audited-timeline` in your `application.scss`:
+
+```sass
+@import "audited-timeline";
 ```
 
 ### Rendering associated audits
@@ -30,7 +38,7 @@ To ease rendering a timeline which includes associated audits, there is a
 `has_associated_audits`:
 
 ```ruby
-class MyObject < ActiveRecord::Base
+class User < ActiveRecord::Base
   include AuditedTimeline::AuditedConcern
   audited
   has_associated_audits
@@ -47,8 +55,8 @@ to create.
 
 ```html
 <div class="audited-timeline-body">
-  <!-- create partial audits/lvm/volume.create to override this table -->
-  <h1>Object</h1>
+  <!-- create partial audits/user.create to override this table -->
+  <h1>User</h1>
   <table class="diff">
    ...
   </table>
@@ -59,3 +67,15 @@ In this case, create in your application `app/views/audits/lvm/_volume.create.ht
 to override this audit type.
 
 audited-timeline will provide a locale called `audit` to your partial.
+
+### Readable object names
+
+audited-timeline will simply call `#to_s` on your model name. To prevent having
+`#<User:0x007fe2e8a25f58>` in your timeline, define `#to_s` on your `User`
+model:
+
+```ruby
+class User < ActiveRecord::Base
+  alias_attribute :to_s, :fullname
+end
+```
