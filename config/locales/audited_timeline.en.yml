@@ -1,0 +1,7 @@
+---
+en:
+  audited_timeline:
+    diff:
+      attribute: Attribute
+      from: Old
+      to: New
