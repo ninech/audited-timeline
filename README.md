@@ -63,7 +63,7 @@ to create.
 </div>
 ```
 
-In this case, create in your application `app/views/audits/lvm/_volume.create.html.erb`
+In this case, create in your application `app/views/audits/_user.create.html.erb`
 to override this audit type.
 
 audited-timeline will provide a locale called `audit` to your partial.
