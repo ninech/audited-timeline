@@ -29,8 +29,8 @@ module AuditedTimeline
     private
 
     def human_value(field, value)
-      return I18n.t('shared.yes') if value == true
-      return I18n.t('shared.no') if value == false
+      return I18n.t('audited_timeline.yes') if value == true
+      return I18n.t('audited_timeline.no') if value == false
       if enum_values(field)
         return I18n.t("#{audited_class.table_name.singularize}.#{field}.#{enum_value(field, value)}")
       end
