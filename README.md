@@ -2,7 +2,7 @@
 
 This gem provides a frontend to the [audited](https://github.com/collectiveidea/audited) gem.
 
-![Screenshot](https://raw.githubusercontent.com/ninech/audited-timeline/master/images/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/ninech/audited-timeline/master/images/screenshot.png?token=AAHmGTc4OGjO-QUvWWENxW-aR7QQu0Q2ks5VYuTjwA%3D%3D)
 
 ## Setup
 
