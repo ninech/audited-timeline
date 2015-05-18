@@ -5,8 +5,8 @@ en:
       attribute: Attribute
       from: Old
       to: New
-    yes: Yes
-    no: No
+    'yes': Yes
+    'no': No
   time:
     formats:
       audited_timeline: "%Y-%m-%d %H:%M"

@@ -5,8 +5,8 @@ de:
       attribute: Attribut
       from: Bisher
       to: Neu
-    yes: Ja
-    no: Nein
+    'yes': Ja
+    'no': Nein
   time:
     formats:
       audited_timeline: "%Y-%m-%d %H:%M"
