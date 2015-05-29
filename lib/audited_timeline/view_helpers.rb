@@ -13,7 +13,7 @@ module AuditedTimeline
 
     def audited_timeline_gravatar_url(email)
       email_hash = Digest::MD5.hexdigest(email.to_s)
-      "http://www.gravatar.com/avatar/#{email_hash}"
+      "https://www.gravatar.com/avatar/#{email_hash}"
     end
 
     def audited_timeline_user_gravatar(user, options = {})
