@@ -1,11 +1,15 @@
 <%= cache [audit, :diff] do %>
-  <h1><%= audit.auditable_type.constantize.model_name.human %></h1>
+  <h1><%= audit.audited_title %></h1>
   <table class="diff">
     <thead>
       <tr>
         <th><%= t '.attribute' %></th>
-        <th><%= t '.from' %></th>
-        <th><%= t '.to' %></th>
+        <% if audit.action == 'update' %>
+          <th><%= t '.from' %></th>
+          <th><%= t '.to' %></th>
+        <% else %>
+          <th><%= t '.value' %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>

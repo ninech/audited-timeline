@@ -5,6 +5,7 @@ de:
       attribute: Attribut
       from: Bisher
       to: Neu
+      value: Wert
     'yes': Ja
     'no': Nein
   time:

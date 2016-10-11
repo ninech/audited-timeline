@@ -3,15 +3,6 @@ require 'draper'
 module AuditedTimeline
   class AuditDecorator < ::Draper::Decorator
     delegate_all
-    delegate :fullname, to: :user, allow_nil: true, prefix: true
-
-    def audited_contact
-      Contact.unscoped.find(object.audited_changes['contact_id'])
-    end
-
-    def audited_role
-      AccountContact.roles.key(object.audited_changes['role'])
-    end
 
     def human_audited_changes
       human_changes = {}
@@ -24,6 +15,13 @@ module AuditedTimeline
         end
       end
       human_changes
+    end
+
+    def audited_title
+      [
+        auditable_type.constantize.model_name.human,
+        object_name_by_type_and_value(auditable_type, auditable_id)
+      ].join(' ')
     end
 
     private
@@ -44,6 +42,15 @@ module AuditedTimeline
         "#{obj} (#{value})"
       rescue
         "unknown (#{value})"
+      end
+    end
+
+    def object_name_by_type_and_value(type, value)
+      return nil unless value
+      begin
+        type.constantize.unscoped.find(value)
+      rescue
+        nil
       end
     end
 

@@ -1,8 +1,12 @@
+.audited-timeline-list .audited-timeline-wrapper:first-child {
+  margin-top: 0;
+}
+
 .audited-timeline-wrapper {
-  position: relative;
-  padding: 2px 0px 2px 64px;
-  margin-top: $base-spacing;
   margin-bottom: $base-spacing;
+  margin-top: $base-spacing;
+  padding: 2px 0px 2px;
+  position: relative;
 
   &:first-child {
     margin-top: 0;
@@ -13,37 +17,44 @@
     margin-left: -64px;
     border-radius: $base-border-radius;
   }
+
+  .with-avatars {
+    padding-left: 64px;
+  }
 }
 
-.audited-timeline-item {
+.audited-timeline-wrapper .with-avatars .audited-timeline-item {
   position: relative;
-  border: $base-border;
-  border-radius: $base-border-radius;
 
   &:before, &:after {
-    position: absolute;
-    top: 11px;
-    left: -16px;
-    right: 100%;
-    width: 0;
-    height: 0;
-    display: block;
-    content: " ";
     border-color: transparent;
     border-style: solid solid outset;
+    content: ' ';
+    display: block;
+    height: 0;
+    left: -16px;
+    position: absolute;
+    right: 100%;
+    top: 11px;
+    width: 0;
   }
 
   &:before {
-    border-width: 8px;
     border-right-color: $base-border-color;
+    border-width: 8px;
   }
 
   &:after {
     border-right-color: #f2f8fa;
     border-width: 7px;
-    margin-top: 1px;
     margin-left: 2px;
+    margin-top: 1px;
   }
+}
+
+.audited-timeline-item {
+  border: $base-border;
+  border-radius: $base-border-radius;
 
   &:hover .audited-timeline-header .audited-timeline-actions {
     visibility: visible;
@@ -51,20 +62,22 @@
 }
 
 .audited-timeline-header {
-  padding: $base-spacing/3 $base-spacing/1.5;
   background-color: lighten($light-gray, 15%);
   border-bottom: 1px solid #eee;
   border-top-left-radius: $base-border-radius;
   border-top-right-radius: $base-border-radius;
+  padding: $base-spacing/3 $base-spacing/1.5;
 
   .audited-timeline-user {
     font-weight: bold;
     margin-right: 0.5em;
   }
+
   .audited-timeline-date {
     color: $dark-gray;
     font-size: 0.8em;
   }
+
   .audited-timeline-actions {
     float: right;
     visibility: hidden;
@@ -73,8 +86,8 @@
   }
 }
 
-
 .audited-timeline-body {
+  background: #fff;
   padding: $base-spacing/1.5;
 
   p {
@@ -83,8 +96,8 @@
 
   form.simple_form {
     float: none;
-    width: 100%;
     margin: 0;
+    width: 100%;
   }
 
   table {
@@ -94,20 +107,29 @@
       padding: 0 0 .25em;
     }
 
+    th:first-child {
+      width: 12em;
+    }
+
     td {
-      padding: .25em 0;
       font-size: .9em;
+      padding: .25em 0;
     }
 
     tr:last-child td {
-      border-bottom: none;
+      border-bottom: 0;
+    }
+
+    tr th:first-child,
+    tr td:first-child {
+      white-space: nowrap;
     }
   }
 
   h1 {
     font-size: 1.2em;
+    height: auto !important;
     margin: 0 0 .5em;
     padding: 0;
-    height: auto !important;
   }
 }
