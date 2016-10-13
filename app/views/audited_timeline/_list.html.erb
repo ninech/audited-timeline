@@ -1,29 +1,33 @@
-<% audits.reorder('created_at desc').limit(10).decorate.each do |audit| %>
-  <div id="<%= dom_id audit %>" class="audited-timeline-wrapper">
-    <% if audit.user.present? %>
-      <%= audited_timeline_user_gravatar audit.user %>
-    <% end %>
+<% with_avatars = local_assigns[:with_avatars] == true ? true : false %>
+<% sort = local_assigns[:sort] || 'desc' %>
+<div class="audited-timeline-list">
+  <% audits.reorder("created_at #{sort}").limit(10).decorate.each do |audit| %>
+    <div id="<%= dom_id audit %>" class="audited-timeline-wrapper <%= 'with-avatars' if with_avatars == true %> ">
+      <% if with_avatars == true && audit.user.present? %>
+        <%= audited_timeline_user_gravatar audit.user %>
+      <% end %>
 
-    <div class="audited-timeline-item audited-timeline-audit <%= audit.action %>">
-      <div class="audited-timeline-header">
-        <span class="audited-timeline-user">
-          <%= audit.user %>
-          <%= audited_timeline_action_icon audit %>
-        </span>
-        <span class="audited-timeline-date">
-          <%= l audit.created_at, format: :audited_timeline %>
-        </span>
-      </div>
-      <div class="audited-timeline-body">
-        <% if lookup_context.template_exists?(audited_timeline_partial_for(audit), [], true) %>
-          <%= render audited_timeline_partial_for(audit), audit: audit %>
-        <% else %>
-          <% if Rails.env.development? %>
-            <!-- create partial <%= audited_timeline_partial_for(audit) %> to override this table -->
+      <div class="audited-timeline-item audited-timeline-audit <%= audit.action %>">
+        <div class="audited-timeline-header">
+          <span class="audited-timeline-user">
+            <%= audit.user %>
+            <%= audited_timeline_action_icon audit %>
+          </span>
+          <span class="audited-timeline-date">
+            <%= l audit.created_at, format: :audited_timeline %>
+          </span>
+        </div>
+        <div class="audited-timeline-body">
+          <% if lookup_context.template_exists?(audited_timeline_partial_for(audit), [], true) %>
+            <%= render audited_timeline_partial_for(audit), audit: audit %>
+          <% else %>
+            <% if Rails.env.development? %>
+              <!-- create partial <%= audited_timeline_partial_for(audit) %> to override this table -->
+            <% end %>
+            <%= render 'audited_timeline/diff', audit: audit %>
           <% end %>
-          <%= render 'audited_timeline/diff', audit: audit %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

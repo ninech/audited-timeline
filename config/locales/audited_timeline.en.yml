@@ -5,6 +5,7 @@ en:
       attribute: Attribute
       from: Old
       to: New
+      value: Value
     'yes': Yes
     'no': No
   time:
