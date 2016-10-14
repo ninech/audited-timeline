@@ -1,5 +1,5 @@
 module AuditedTimeline
-  class Audit < Audited.audit_class
+  class Audit < Audited::Audit
     delegate :name, to: :user, allow_nil: true, prefix: true
 
     def auditable_class
