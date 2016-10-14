@@ -1,4 +1,4 @@
-<%= cache [audit, :diff] do %>
+<%= cache [audit, I18n.locale, :diff] do %>
   <h1><%= audit.audited_title %></h1>
   <table class="diff">
     <thead>
