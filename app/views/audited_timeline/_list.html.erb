@@ -1,7 +1,8 @@
 <% with_avatars = local_assigns[:with_avatars] == true ? true : false %>
 <% sort = local_assigns[:sort] || 'desc' %>
+<% limit = local_assigns[:limit] || 25 %>
 <div class="audited-timeline-list">
-  <% audits.reorder("created_at #{sort}").limit(10).decorate.each do |audit| %>
+  <% audits.reorder("created_at #{sort}").limit(limit).decorate.each do |audit| %>
     <div id="<%= dom_id audit %>" class="audited-timeline-wrapper <%= 'with-avatars' if with_avatars == true %> ">
       <% if with_avatars == true && audit.user.present? %>
         <%= audited_timeline_user_gravatar audit.user %>
