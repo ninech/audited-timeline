@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = File.read(File.expand_path('../VERSION', __FILE__)).strip
   spec.authors       = ['nine.ch Development']
   spec.email         = ['development@nine.ch']
-  spec.summary       = %q{Frontent to audited}
+  spec.summary       = 'Frontent to audited'
   spec.homepage      = 'https://github.com/ninech/audited-timeline'
   spec.license       = 'MIT'
   spec.description   = 'audited-timeline provides timeline frontend to audited'
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.6'
 
-  spec.add_runtime_dependency 'audited', '>= 4.2.0'
+  spec.add_runtime_dependency 'audited', '~> 4.3.0'
   spec.add_runtime_dependency 'rails', '>= 4.0.0'
   spec.add_runtime_dependency 'draper', '>= 2.1.0'
 end
