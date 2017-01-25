@@ -8,6 +8,10 @@ de:
       value: Wert
     'yes': Ja
     'no': Nein
+  item:
+    abortion_reason:
+      other: "Andere"
+      cancelled: "Gekündigt"
   time:
     formats:
       audited_timeline: "%Y-%m-%d %H:%M"
