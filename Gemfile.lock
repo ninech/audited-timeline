@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    audited-timeline (1.0.5)
-      audited (>= 4.2.0)
+    audited-timeline (1.0.7)
+      audited (~> 4.3.0)
       draper (>= 2.1.0)
       rails (>= 4.0.0)
 
