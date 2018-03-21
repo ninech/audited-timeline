@@ -1,4 +1,7 @@
 language: ruby
+script:
+  # no specs to run
+  - true
 deploy:
   - provider: rubygems
     api_key:
