@@ -22,7 +22,7 @@ module AuditedTimeline
     end
 
     def audited_timeline_partial_for(audit)
-      "audits/#{audit.auditable_type.underscore}.#{audit.action}"
+      "audits/#{audit.auditable_type.underscore}_#{audit.action}"
     end
   end
 end
