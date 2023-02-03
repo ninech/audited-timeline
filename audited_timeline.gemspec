@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'audited-timeline'
-  spec.version       = File.read(File.expand_path('../VERSION', __FILE__)).strip
+  spec.version       = ENV.fetch("GEM_VERSION", [`git describe --tags --abbrev=0`, `git rev-parse --short HEAD`].map(&:chomp).join(".")).delete_prefix("v")
   spec.authors       = ['nine.ch Development']
   spec.email         = ['development@nine.ch']
   spec.summary       = 'Frontent to audited'
