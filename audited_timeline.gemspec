@@ -6,8 +6,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |spec|
   spec.name          = 'audited-timeline'
   spec.version       = ENV.fetch("GEM_VERSION", [`git describe --tags --abbrev=0`, `git rev-parse --short HEAD`].map(&:chomp).join(".")).delete_prefix("v")
-  spec.authors       = ['nine.ch Development']
-  spec.email         = ['development@nine.ch']
+  spec.authors       = ['Nine Internet Solutions AG']
+  spec.email         = ['support@nine.ch']
   spec.summary       = 'Frontent to audited'
   spec.homepage      = 'https://github.com/ninech/audited-timeline'
   spec.license       = 'MIT'
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler"
 
-  spec.add_runtime_dependency 'audited', '~> 4.3'
+  spec.add_runtime_dependency 'audited', '>= 4.0'
   spec.add_runtime_dependency 'rails', '>= 4.0.0'
   spec.add_runtime_dependency 'draper', '>= 2.1.0'
 end
